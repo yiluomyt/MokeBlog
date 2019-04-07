@@ -1,0 +1,77 @@
+@import "~@/styles/theme.less";
+
+@color-nav-bg: rgba(255, 255, 255, 0.35);
+
+.header {
+  min-height: 65vh;
+  // 在无法加载图片时，显示底色
+  background-color: rgba(63, 63, 63, 0.3);
+  // 背景图片中心缩放
+  background-size: cover;
+  background-position: center;
+
+  nav {
+    // 左右空隙
+    padding: 0 8vw;
+    // nav都为英文
+    font-weight: @font-weight-semibold;
+    background-color: @color-nav-bg;
+    // nav下边缘阴影
+    box-shadow: 0 1px 2px @color-shadow;
+    // 消除float影响
+    overflow: auto;
+  }
+}
+
+.site-title {
+  display: inline-block;
+  padding: 8px 0;
+  font-size: 24px;
+  font-weight: @font-weight-semibold;
+  text-shadow: 0px 1px 2px @color-shadow;
+
+  &:hover a {
+    color: @color-text-fade;
+  }
+}
+
+.menu {
+  list-style: none;
+  float: right;
+  font-size: @font-size-lg;
+
+  li {
+    float: left;
+
+    a {
+      display: block;
+      padding: 16px;
+      color: @color-text-fade;
+      transition: all @ease-time @ease-in-out;
+
+      &:hover {
+        color: @color-text;
+        background-color: fade(@color-text, 35%);
+      }
+    }
+  }
+}
+
+.title {
+  color: @color-text-light;
+  text-align: center;
+  padding-top: 20vh;
+  text-shadow: 8px 5px 4px @color-shadow;
+
+  h1 {
+    font-size: 40px;
+    font-weight: @font-weight-medium;
+  }
+
+  p {
+    font-size: @font-size-lg;
+    width: 40vw;
+    // 间隔单倍行距
+    margin: @font-size-lg auto;
+  }
+}

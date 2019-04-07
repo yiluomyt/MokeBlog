@@ -1,0 +1,73 @@
+@import "~@/styles/theme.less";
+@import "~@/styles/util.less";
+
+.pagination {
+  text-align: center;
+}
+
+.prev,
+.next,
+.item,
+.container {
+  display: inline-block;
+  min-width: 16px;
+  height: 16px;
+  padding: 4px;
+  text-align: center;
+  vertical-align: middle;
+
+  margin-right: 8px;
+
+  font-family: @font-family-number;
+
+  transition: all @ease-time @ease-in-out;
+}
+
+.item {
+  border: 1px solid @color-text-fade;
+  border-radius: 4px;
+
+  .hover-color(@color-text);
+
+  &-active {
+    .hover-color(@color-primary);
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+// 配置透明度
+.container {
+  position: relative;
+
+  .ellipsis {
+    opacity: 1;
+  }
+
+  .angle {
+    opacity: 0;
+  }
+
+  &:hover {
+    .ellipsis {
+      opacity: 0;
+    }
+
+    .angle {
+      opacity: 1;
+    }
+  }
+}
+
+// 省略号与箭头重叠
+.ellipsis,
+.angle {
+  display: block;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

@@ -1,0 +1,51 @@
+@import "~@/styles/theme.less";
+
+@color-bg: rgba(119, 119, 119, 0.1);
+@color-svg: @color-text-light;
+@color-svg-bg: rgba(80, 80, 80, 0.8);
+@color-svg-bg-hover: @color-second;
+
+.footer {
+  text-align: center;
+  background: @color-bg;
+  padding: 16px 0;
+}
+
+.contact {
+  position: relative;
+  margin-bottom: 8px;
+
+  svg {
+    cursor: pointer;
+
+    font-size: 24px;
+    border-radius: 16px;
+    padding: 8px;
+    margin: 0 8px;
+    color: @color-svg;
+    background: @color-svg-bg;
+
+    &:hover {
+      background: @color-svg-bg-hover;
+    }
+  }
+}
+
+.alipay:hover + .qrcode {
+  @size-qrcode: 160px;
+  width: @size-qrcode;
+  height: @size-qrcode;
+
+  position: absolute;
+  // 位于支付宝图标正上方
+  left: calc(50% - @size-qrcode / 2 + 56px);
+  bottom: 64px;
+
+  background-image: url("https://yiluoblog.blob.core.windows.net/image/%E6%94%B6%E6%AC%BE%E7%A0%81.jpg");
+  background-color: @color-bg;
+  background-position: center;
+  background-size: cover;
+
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  border-radius: 10%;
+}

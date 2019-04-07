@@ -1,0 +1,93 @@
+@import "~@/styles/theme.less";
+@import "~@/styles/util.less";
+
+// 博客列表样式
+.post {
+  // 间隔下划线
+  padding-bottom: 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+// 标题和摘要 hover不变色
+.link:hover {
+  color: @color-text;
+}
+
+// 标题
+.title {
+  // 为了定位下划线
+  position: relative;
+  display: inline-block;
+
+  // 标题下划线
+  &::after {
+    // 必须，不然不显示
+    content: "";
+    // 绝对定位
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+
+    background-color: @color-text-fade;
+
+    // 动效初始化
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all @ease-time @ease-in-out;
+  }
+}
+
+// 标题下划线动效
+.link:hover .title::after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+// 摘要
+.excerpt {
+  // 首行所经
+  text-indent: 2em;
+  margin: 8px auto;
+}
+
+// 日期
+.date {
+  margin-right: 8px;
+}
+
+// 主题
+.topic {
+  font-weight: @font-weight-medium;
+}
+
+// 标签组
+.tag-group {
+  margin-top: 8px;
+
+  a:first-child {
+    .hover-color(@color-primary);
+  }
+
+  a:nth-child(2) {
+    .hover-color(@color-second);
+  }
+
+  a:nth-child(3) {
+    .hover-color(@color-text);
+  }
+
+  span {
+    .hover-color(@color-text-fade);
+  }
+}
+
+// 适配较宽屏幕下的标签组显示
+@media screen and (min-width: @screen-md-min) {
+  .tag-group {
+    float: right;
+    margin-top: 0;
+  }
+}

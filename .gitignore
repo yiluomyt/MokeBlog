@@ -1,0 +1,9 @@
+# 博客内容
+content/blog
+
+# npm依赖
+node_modules
+
+# gatsby临时文件
+.cache
+public

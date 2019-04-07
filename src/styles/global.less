@@ -1,0 +1,44 @@
+@import "./theme.less";
+// 初始化样式表
+* {
+  // 重置默认边距
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  // 设置默认字体样式
+  font-family: @font-family-default;
+  font-size: @font-size-base;
+  font-weight: @font-weight-regular;
+
+  color: @color-text;
+  background: #f4f5f5;
+}
+
+a {
+  // 取消下划线
+  text-decoration: none;
+  color: @color-text;
+
+  &:hover {
+    color: @color-primary;
+  }
+}
+
+// 设置标题字体样式
+// 设置标题字体大小
+h1 {
+  font-size: @h1-size;
+  font-weight: @font-weight-semibold;
+}
+
+h2 {
+  font-size: @h2-size;
+  font-weight: @font-weight-medium;
+}
+
+h3 {
+  font-size: @h3-size;
+  font-weight: @font-weight-medium;
+}

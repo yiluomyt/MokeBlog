@@ -1,0 +1,15 @@
+@import "~@/styles/theme.less";
+
+// 基础容器
+.container {
+  max-width: @screen-lg;
+  margin: 0 auto;
+}
+
+// 多列布局
+.flex {
+  @media screen and (min-width: @screen-md-min) {
+    max-width: @screen-xl;
+    display: flex;
+  }
+}

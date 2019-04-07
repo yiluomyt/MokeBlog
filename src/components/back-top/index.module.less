@@ -1,0 +1,31 @@
+@import "~@/styles/theme.less";
+
+.back-top {
+  cursor: pointer;
+
+  position: fixed;
+  bottom: -100px;
+  right: 30px;
+  z-index: 1050;
+
+  padding: 4px;
+  padding-bottom: 0;
+  font-size: 24px;
+  line-height: 24px;
+  border-radius: 2px;
+
+  color: @color-text-light;
+  background: @color-text-fade;
+  opacity: 0.65;
+
+  text-align: center;
+  transition: bottom @ease-time @ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &-on {
+    bottom: 30px;
+  }
+}
