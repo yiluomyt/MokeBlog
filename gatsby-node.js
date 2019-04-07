@@ -10,7 +10,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   let i = 0;
   if (node.internal.type === `MarkdownRemark`) {
     const fileNode = getNode(node.parent);
-    const dirName = fileNode.relativeDirectory.split(`\\`)[0];
+    const dirName = fileNode.relativeDirectory.replace(`\\`, `/`).split(`/`)[0];
     const slug = createFilePath({ node, getNode });
 
     const fields = [];
