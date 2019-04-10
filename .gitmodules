@@ -1,4 +1,4 @@
-[submodule "blog"]
-  path = content/blog
-  url = git@github.com:yiluomyt/Blog.git
-  branch = netlify
+[submodule "content/blog"]
+	path = content/blog
+	url = https://github.com/yiluomyt/Blog.git
+	branch = netlify
