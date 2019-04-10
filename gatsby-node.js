@@ -28,12 +28,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       // 博客主题
       {
         name: `topic`,
-        value: node.frontmatter.topic || dirName,
+        value: node.frontmatter.topic || dirName || `无`,
       },
       // 博客标签
       {
         name: `tags`,
-        value: node.frontmatter.tags || ["未分类"],
+        value: node.frontmatter.tags || [`未分类`],
       },
       // 博客日期
       {
@@ -43,7 +43,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       // 博客封面
       {
         name: `cover`,
-        value: node.frontmatter.cover || "",
+        value: node.frontmatter.cover || ``,
       },
       // 置顶博客
       {

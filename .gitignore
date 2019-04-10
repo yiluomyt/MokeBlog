@@ -1,5 +1,6 @@
 # 博客内容
 content/blog
+static/Images
 
 # npm依赖
 node_modules

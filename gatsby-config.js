@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   siteMetadata: {
-    siteTitle: "Blog",
+    siteTitle: "Moke",
     description: "This is Blog framework.",
     url: "https://blog.mytyiluo.cn",
     menuItems: [
@@ -24,7 +24,10 @@ module.exports = {
         javascriptEnabled: true,
         cssLoaderOptions: {
           minifyClassNames: true,
-          localIdentName: "[path][name]__[local]--[hash:base64:5]",
+          localIdentName:
+            process.env.NODE_ENV === "development"
+              ? "[path][name]__[local]--[hash:base64:5]"
+              : "[hash:base64:5]",
         },
       },
     },
@@ -46,6 +49,7 @@ module.exports = {
               noInlineHighlight: false,
             },
           },
+          // `gatsby-remark-images-prefix`,
         ],
       },
     },
@@ -56,6 +60,19 @@ module.exports = {
         "@": path.join(__dirname, "src"),
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Moke Blog`,
+        short_name: `Moke`,
+        start_url: `/`,
+        background_color: `#337ab7`,
+        theme_color: `#2f54eb`,
+        display: `standalone`,
+        icon: `static/icon.png`
+      },
+    },
+    `gatsby-plugin-offline`,
     // make sure to put last in the array
     {
       resolve: `gatsby-plugin-netlify`,
