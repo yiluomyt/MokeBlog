@@ -1,0 +1,4 @@
+[submodule "blog"]
+  path = content/blog
+  url = git@github.com:yiluomyt/Blog.git
+  branch = netlify
