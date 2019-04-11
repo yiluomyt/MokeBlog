@@ -38,6 +38,7 @@ module.exports = {
         path: `${__dirname}/content/blog/`,
       },
     },
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -49,7 +50,12 @@ module.exports = {
               noInlineHighlight: false,
             },
           },
-          // `gatsby-remark-images-prefix`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // 
+            }
+          }
         ],
       },
     },
@@ -66,7 +72,7 @@ module.exports = {
         name: `Moke Blog`,
         short_name: `Moke`,
         start_url: `/`,
-        background_color: `#337ab7`,
+        background_color: `#ffffff`,
         theme_color: `#2f54eb`,
         display: `standalone`,
         icon: `static/icon.png`
