@@ -31,7 +31,7 @@
   }
 }
 
-.alipay:hover + .qrcode {
+.alipay:hover + .qrcode, .qrcode:hover {
   @size-qrcode: 160px;
   width: @size-qrcode;
   height: @size-qrcode;
@@ -41,7 +41,7 @@
   left: calc(50% - @size-qrcode / 2 + 56px);
   bottom: 64px;
 
-  background-image: url("https://yiluoblog.blob.core.windows.net/image/%E6%94%B6%E6%AC%BE%E7%A0%81.jpg");
+  background-image: url("/alipay.jpg");
   background-color: @color-bg;
   background-position: center;
   background-size: cover;

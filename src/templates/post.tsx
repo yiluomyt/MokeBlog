@@ -4,9 +4,6 @@ import { Layout, Card, Post } from "@/components";
 
 import { MarkdownRemark, MarkdownRemarkFields } from "@/types";
 
-const defaultBgImg =
-  "https://yiluoblog.blob.core.windows.net/image/%E6%99%BA%E4%B9%83%20%E9%9B%AA%E6%99%AF.jpg";
-
 interface PostPageProps {
   data: {
     post: MarkdownRemark;
@@ -24,7 +21,7 @@ class PostPage extends PureComponent<PostPageProps, {}> {
     return (
       <Layout
         title={title}
-        backgroundImage={bgImg || defaultBgImg}
+        backgroundImage={bgImg || "/bg.jpg"}
         metaTitle={`${title} - ${topic}`}
       >
         <Card>

@@ -11,7 +11,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   if (node.internal.type === `MarkdownRemark`) {
     const fileNode = getNode(node.parent);
     const dirName = fileNode.relativeDirectory.replace(`\\`, `/`).split(`/`)[0];
-    const slug = createFilePath({ node, getNode });
+    const slug = createFilePath({ node, getNode }).replace(`\\`, `/`);
 
     const fields = [];
     fields.push(
@@ -49,6 +49,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       {
         name: `top`,
         value: node.frontmatter.top || 0,
+      },
+      // 是否发布
+      {
+        name: `posted`,
+        value: node.frontmatter.posted !== false, // 默认为true
       }
     );
     // 创建字段
@@ -61,7 +66,9 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
   return graphql(`
     {
-      posts: allMarkdownRemark(filter: { fields: { name: { ne: "README" } } }) {
+      posts: allMarkdownRemark(
+        filter: { fields: { name: { ne: "README" }, posted: { ne: false } } }
+      ) {
         nodes {
           fields {
             slug

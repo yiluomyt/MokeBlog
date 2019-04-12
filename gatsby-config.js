@@ -36,6 +36,7 @@ module.exports = {
       options: {
         name: `blog`,
         path: `${__dirname}/content/blog/`,
+        ignore: [`**/SUMMARY.md`]
       },
     },
     `gatsby-plugin-sharp`,

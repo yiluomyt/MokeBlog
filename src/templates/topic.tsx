@@ -6,9 +6,6 @@ import styles from "./topic.module.less";
 
 import { MarkdownRemark } from "@/types";
 
-const bgImg =
-  "https://yiluoblog.blob.core.windows.net/image/%E5%8A%A0%E8%97%A4%E6%83%A02.jpg";
-
 interface TopicPageProps {
   data: {
     posts: { nodes: Array<MarkdownRemark> };
@@ -36,7 +33,7 @@ class TopicPage extends PureComponent<TopicPageProps, {}> {
           style: { flexDirection: "row-reverse" },
         }}
         metaTitle={`Topic: ${topic}`}
-        backgroundImage={bgImg}
+        backgroundImage="/bg.jpg"
       >
         <div>
           <Card className={styles.catalog} title="目录">
@@ -61,7 +58,13 @@ export default TopicPage;
 export const query = graphql`
   query($topic: String!) {
     posts: allMarkdownRemark(
-      filter: { fields: { topic: { eq: $topic }, name: { ne: "README" } } }
+      filter: {
+        fields: {
+          topic: { eq: $topic }
+          name: { ne: "README" }
+          posted: { ne: false }
+        }
+      }
     ) {
       nodes {
         id

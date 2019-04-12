@@ -773,6 +773,7 @@ export type MarkdownRemarkFields = {
   date?: Maybe<Scalars["Date"]>;
   cover?: Maybe<Scalars["String"]>;
   top?: Maybe<Scalars["Int"]>;
+  posted?: Maybe<Scalars["Boolean"]>;
 };
 
 export type MarkdownRemarkFieldsDateArgs = {
@@ -872,6 +873,7 @@ export enum MarkdownRemarkFieldsEnum {
   Frontmatter___Title = "frontmatter___title",
   Frontmatter___Tags = "frontmatter___tags",
   Frontmatter___Date = "frontmatter___date",
+  Frontmatter___Posted = "frontmatter___posted",
   Excerpt = "excerpt",
   RawMarkdownBody = "rawMarkdownBody",
   FileAbsolutePath = "fileAbsolutePath",
@@ -882,6 +884,7 @@ export enum MarkdownRemarkFieldsEnum {
   Fields___Date = "fields___date",
   Fields___Cover = "fields___cover",
   Fields___Top = "fields___top",
+  Fields___Posted = "fields___posted",
   Html = "html",
   HtmlAst = "htmlAst",
   ExcerptAst = "excerptAst",
@@ -903,6 +906,7 @@ export type MarkdownRemarkFieldsFilterInput = {
   date?: Maybe<DateQueryOperatorInput>;
   cover?: Maybe<StringQueryOperatorInput>;
   top?: Maybe<IntQueryOperatorInput>;
+  posted?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type MarkdownRemarkFilterInput = {
@@ -928,6 +932,7 @@ export type MarkdownRemarkFrontmatter = {
   title?: Maybe<Scalars["String"]>;
   tags?: Maybe<Array<Maybe<Scalars["String"]>>>;
   date?: Maybe<Scalars["Date"]>;
+  posted?: Maybe<Scalars["Boolean"]>;
 };
 
 export type MarkdownRemarkFrontmatterDateArgs = {
@@ -941,6 +946,7 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
+  posted?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1569,8 +1575,15 @@ export enum SitePageFieldsEnum {
   PluginCreator___PluginOptions___CssLoaderOptions___LocalIdentName = "pluginCreator___pluginOptions___cssLoaderOptions___localIdentName",
   PluginCreator___PluginOptions___Name = "pluginCreator___pluginOptions___name",
   PluginCreator___PluginOptions___Path = "pluginCreator___pluginOptions___path",
+  PluginCreator___PluginOptions___Ignore = "pluginCreator___pluginOptions___ignore",
   PluginCreator___PluginOptions___NoInlineHighlight = "pluginCreator___pluginOptions___noInlineHighlight",
   PluginCreator___PluginOptions____ = "pluginCreator___pluginOptions____",
+  PluginCreator___PluginOptions___Short_Name = "pluginCreator___pluginOptions___short_name",
+  PluginCreator___PluginOptions___Start_Url = "pluginCreator___pluginOptions___start_url",
+  PluginCreator___PluginOptions___Background_Color = "pluginCreator___pluginOptions___background_color",
+  PluginCreator___PluginOptions___Theme_Color = "pluginCreator___pluginOptions___theme_color",
+  PluginCreator___PluginOptions___Display = "pluginCreator___pluginOptions___display",
+  PluginCreator___PluginOptions___Icon = "pluginCreator___pluginOptions___icon",
   PluginCreator___PluginOptions___PathCheck = "pluginCreator___pluginOptions___pathCheck",
   PluginCreator___NodeApIs = "pluginCreator___nodeAPIs",
   PluginCreator___BrowserApIs = "pluginCreator___browserAPIs",
@@ -1772,8 +1785,15 @@ export enum SitePluginFieldsEnum {
   PluginOptions___CssLoaderOptions___LocalIdentName = "pluginOptions___cssLoaderOptions___localIdentName",
   PluginOptions___Name = "pluginOptions___name",
   PluginOptions___Path = "pluginOptions___path",
+  PluginOptions___Ignore = "pluginOptions___ignore",
   PluginOptions___NoInlineHighlight = "pluginOptions___noInlineHighlight",
   PluginOptions____ = "pluginOptions____",
+  PluginOptions___Short_Name = "pluginOptions___short_name",
+  PluginOptions___Start_Url = "pluginOptions___start_url",
+  PluginOptions___Background_Color = "pluginOptions___background_color",
+  PluginOptions___Theme_Color = "pluginOptions___theme_color",
+  PluginOptions___Display = "pluginOptions___display",
+  PluginOptions___Icon = "pluginOptions___icon",
   PluginOptions___PathCheck = "pluginOptions___pathCheck",
   NodeApIs = "nodeAPIs",
   BrowserApIs = "browserAPIs",
@@ -1898,8 +1918,15 @@ export type SitePluginPluginOptions = {
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptions>;
   name?: Maybe<Scalars["String"]>;
   path?: Maybe<Scalars["String"]>;
+  ignore?: Maybe<Array<Maybe<Scalars["String"]>>>;
   noInlineHighlight?: Maybe<Scalars["Boolean"]>;
   _?: Maybe<Scalars["String"]>;
+  short_name?: Maybe<Scalars["String"]>;
+  start_url?: Maybe<Scalars["String"]>;
+  background_color?: Maybe<Scalars["String"]>;
+  theme_color?: Maybe<Scalars["String"]>;
+  display?: Maybe<Scalars["String"]>;
+  icon?: Maybe<Scalars["String"]>;
   pathCheck?: Maybe<Scalars["Boolean"]>;
 };
 
@@ -1919,8 +1946,15 @@ export type SitePluginPluginOptionsFilterInput = {
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptionsFilterInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
+  ignore?: Maybe<StringQueryOperatorInput>;
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>;
   _?: Maybe<StringQueryOperatorInput>;
+  short_name?: Maybe<StringQueryOperatorInput>;
+  start_url?: Maybe<StringQueryOperatorInput>;
+  background_color?: Maybe<StringQueryOperatorInput>;
+  theme_color?: Maybe<StringQueryOperatorInput>;
+  display?: Maybe<StringQueryOperatorInput>;
+  icon?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 

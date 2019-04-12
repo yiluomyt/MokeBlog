@@ -36,7 +36,7 @@ class IndexPage extends PureComponent<IndexProps, {}> {
       <Layout
         title={title}
         subtitle={subtitle}
-        backgroundImage={bgImg}
+        backgroundImage="/bg.jpg"
         containerOptions={{ flex: true }}
         metaTitle="Moke Blog"
       >
@@ -75,7 +75,7 @@ export default IndexPage;
 export const query = graphql`
   {
     posts: allMarkdownRemark(
-      filter: { fields: { name: { ne: "README" } } }
+      filter: { fields: { name: { ne: "README" }, posted: { ne: false } } }
       sort: { fields: [fields___top, fields___date], order: [ASC, DESC] }
       limit: 6
     ) {
@@ -93,7 +93,7 @@ export const query = graphql`
       }
     }
     statistics: allMarkdownRemark(
-      filter: { fields: { name: { ne: "README" } } }
+      filter: { fields: { name: { ne: "README" }, posted: { ne: false } } }
     ) {
       nodes {
         fields {

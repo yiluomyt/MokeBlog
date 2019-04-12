@@ -4,9 +4,6 @@ import { Layout, Card, PostList, Pagination } from "@/components";
 
 import { MarkdownRemark } from "@/types";
 
-const bgImg =
-  "https://yiluoblog.blob.core.windows.net/image/%E6%99%BA%E4%B9%83%20%E9%9B%AA%E6%99%AF.jpg";
-
 interface ListPageProps {
   data: {
     posts: { nodes: Array<MarkdownRemark> };
@@ -22,7 +19,7 @@ class ListPage extends PureComponent<ListPageProps, {}> {
     const posts = this.props.data.posts.nodes;
     const { curPage, numPages } = this.props.pageContext;
     return (
-      <Layout title="博客列表" backgroundImage={bgImg}>
+      <Layout title="博客列表" backgroundImage="/bg.jpg">
         <Card title={`第${curPage}页`}>
           <PostList posts={posts} />
           <Pagination prefix="/list" current={curPage} total={numPages} />
@@ -37,7 +34,7 @@ export default ListPage;
 export const query = graphql`
   query($skip: Int!, $limit: Int!) {
     posts: allMarkdownRemark(
-      filter: { fields: { name: { ne: "README" } } }
+      filter: { fields: { name: { ne: "README" }, posted: { ne: false } } }
       sort: { fields: [fields___top, fields___date], order: [ASC, DESC] }
       limit: $limit
       skip: $skip
