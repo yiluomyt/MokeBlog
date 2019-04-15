@@ -4,7 +4,7 @@
 // 博客列表样式
 .post {
   // 间隔下划线
-  padding-bottom: 16px;
+  padding-bottom: 8px;
   margin-bottom: 8px;
   border-bottom: 1px solid #e8e8e8;
 }
@@ -50,17 +50,29 @@
 .excerpt {
   // 首行所经
   text-indent: 2em;
-  margin: 8px auto;
+  margin: 4px auto;
+  line-height: @font-size-base * 1.5;
 }
 
-// 日期
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+// 时间
 .date {
-  margin-right: 8px;
+  margin-right: 4px;
+
+  &::after {
+    content: "//";
+    margin-left: 8px;
+  }
 }
 
 // 主题
 .topic {
   font-weight: @font-weight-medium;
+  padding: 4px;
 }
 
 // 标签组
@@ -86,8 +98,13 @@
 
 // 适配较宽屏幕下的标签组显示
 @media screen and (min-width: @screen-md-min) {
+  .info {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
   .tag-group {
-    float: right;
     margin-top: 0;
   }
 }

@@ -31,7 +31,13 @@
   }
 }
 
-.alipay:hover + .qrcode, .qrcode:hover {
+.qrcode {
+  display: none;
+  .alipay:hover + &,
+  &:hover {
+    display: block;
+  }
+
   @size-qrcode: 160px;
   width: @size-qrcode;
   height: @size-qrcode;
@@ -41,10 +47,7 @@
   left: calc(50% - @size-qrcode / 2 + 56px);
   bottom: 64px;
 
-  background-image: url("/alipay.jpg");
   background-color: @color-bg;
-  background-position: center;
-  background-size: cover;
 
   border: 1px rgba(0, 0, 0, 0.1) solid;
   border-radius: 10%;

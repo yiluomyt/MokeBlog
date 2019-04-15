@@ -33,7 +33,8 @@ class TopicPage extends PureComponent<TopicPageProps, {}> {
           style: { flexDirection: "row-reverse" },
         }}
         metaTitle={`Topic: ${topic}`}
-        backgroundImage="/bg.jpg"
+        metaKeywords={[topic]}
+        backgroundImage="/bg.webp"
       >
         <div>
           <Card className={styles.catalog} title="目录">

@@ -20,7 +20,12 @@ class TagPage extends PureComponent<TagPageProps, {}> {
     const posts = this.props.data.posts.nodes;
     const { tag, curPage, numPages } = this.props.pageContext;
     return (
-      <Layout title={tag} metaTitle={`Tag: ${tag}`} backgroundImage="/bg.jpg">
+      <Layout
+        title={tag}
+        metaTitle={`Tag: ${tag}`}
+        backgroundImage="/bg.webp"
+        metaKeywords={[tag]}
+      >
         <Card title={`第${curPage}页`}>
           <PostList posts={posts} />
           <Pagination

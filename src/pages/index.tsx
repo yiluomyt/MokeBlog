@@ -9,8 +9,7 @@ import { MarkdownRemark } from "@/types";
 
 const title = "夏色皆守贴贴";
 const subtitle = "马自立！！！！";
-const bgImg =
-  "https://yiluoblog.blob.core.windows.net/image/%E5%A4%8F%E8%89%B2%E7%9A%86%E5%AE%88.jpg";
+const bgImg = "/bg.webp";
 
 interface IndexProps {
   data: {
@@ -36,7 +35,7 @@ class IndexPage extends PureComponent<IndexProps, {}> {
       <Layout
         title={title}
         subtitle={subtitle}
-        backgroundImage="/bg.jpg"
+        backgroundImage={bgImg}
         containerOptions={{ flex: true }}
         metaTitle="Moke Blog"
       >

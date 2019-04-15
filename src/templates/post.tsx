@@ -17,12 +17,16 @@ class PostPage extends PureComponent<PostPageProps, {}> {
       name: title,
       cover: bgImg,
       topic,
+      tags,
     } = post.fields as MarkdownRemarkFields;
+    let keywords: string[] = (tags as string[]) || [];
+    if (topic) keywords.push(topic);
     return (
       <Layout
         title={title}
-        backgroundImage={bgImg || "/bg.jpg"}
+        backgroundImage={bgImg || "/bg.webp"}
         metaTitle={`${title} - ${topic}`}
+        metaKeywords={keywords}
       >
         <Card>
           <Post post={post} />

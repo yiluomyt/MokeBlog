@@ -19,7 +19,7 @@ class ListPage extends PureComponent<ListPageProps, {}> {
     const posts = this.props.data.posts.nodes;
     const { curPage, numPages } = this.props.pageContext;
     return (
-      <Layout title="博客列表" backgroundImage="/bg.jpg">
+      <Layout title="博客列表" backgroundImage="/bg.webp">
         <Card title={`第${curPage}页`}>
           <PostList posts={posts} />
           <Pagination prefix="/list" current={curPage} total={numPages} />

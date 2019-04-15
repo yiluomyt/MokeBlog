@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import { Link } from "gatsby";
 import Tag from "@/components/tag";
-import { formatDate } from "@/utils";
 
 import { MarkdownRemark, MarkdownRemarkFields } from "@/types";
 
@@ -41,11 +40,15 @@ class PostList extends PureComponent<PostListProps, {}> {
           </h3>
           <p className={styles.excerpt}>{excerpt}</p>
         </Link>
-        {date ? <span className={styles.date}>{date}</span> : null}
-        <Link className={styles.topic} to={`/topic/${topic}`}>
-          {topic}
-        </Link>
-        {this.renderPostTagGroup(tags as string[])}
+        <div className={styles.info}>
+          <div>
+            {date ? <span className={styles.date}>{date}</span> : null}
+            <Link className={styles.topic} to={`/topic/${topic}`}>
+              {topic}
+            </Link>
+          </div>
+          {this.renderPostTagGroup(tags as string[])}
+        </div>
       </div>
     );
   };
