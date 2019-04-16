@@ -7,8 +7,8 @@ import styles from "./index.module.less";
 
 import { MarkdownRemark } from "@/types";
 
-const title = "夏色皆守贴贴";
-const subtitle = "马自立！！！！";
+const title = "Moke Blog";
+const subtitle = "Microsoft Fans ♥ .NET Core";
 const bgImg = "/bg.webp";
 
 interface IndexProps {
@@ -18,12 +18,15 @@ interface IndexProps {
   };
 }
 
+// 页面-首页
 class IndexPage extends PureComponent<IndexProps, {}> {
   render() {
     const posts = this.props.data.posts.nodes;
+    // 统计主题
     const topics = _.uniq(
       this.props.data.statistics.nodes.map(e => e!.fields!.topic)
     );
+    // 统计标签
     const tags = _.uniq(
       this.props.data.statistics.nodes
         .filter(e => e.fields!.tags)

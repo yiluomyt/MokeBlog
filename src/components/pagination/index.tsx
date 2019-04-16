@@ -23,19 +23,33 @@ interface PaginationProps {
   prefix: string;
 }
 
+// 组件-分页
 class Pagination extends PureComponent<PaginationProps, {}> {
+  // 默认间隔数量为3
   static defaultProps = { skipNum: 3 };
 
+  convertTo = (to: number) => {
+    const { prefix } = this.props;
+    if (to === 1) {
+      return prefix;
+    } else {
+      return `${prefix}/${to}`;
+    }
+  };
+
+  // 生成分页项
   generatePaginationItems = (current: number, start: number, end: number) => {
     const items: PaginationItem[] = [];
     const { skipNum } = this.props;
     if (current - start < skipNum) {
+      // 小于间隔数时显示全部页数
       _.range(start, current).forEach(i => {
         items.push({
           to: i,
         });
       });
     } else {
+      // 大于间隔数时，显示第一页，省略符和前一页
       items.push(
         {
           to: 1,
@@ -49,10 +63,12 @@ class Pagination extends PureComponent<PaginationProps, {}> {
         }
       );
     }
+    // 当前页
     items.push({
       to: current,
       isCurrent: true,
     });
+    // 同上
     if (end - current < skipNum) {
       _.range(current + 1, end + 1).forEach(i => {
         items.push({
@@ -77,9 +93,11 @@ class Pagination extends PureComponent<PaginationProps, {}> {
     return items;
   };
 
+  // 渲染省略符
   renderEllipsis = (item: PaginationItem) => {
-    const { skipNum, prefix } = this.props;
+    const { skipNum } = this.props;
     let title, angle;
+    // 根据省略参数指定箭头方向
     if (item.ellipsis === "prev") {
       title = `向前${skipNum}页`;
       angle = <FaAngleDoubleLeft />;
@@ -91,7 +109,7 @@ class Pagination extends PureComponent<PaginationProps, {}> {
       <Link
         key={item.ellipsis}
         className={styles.container}
-        to={`${prefix}/${item.to}`}
+        to={this.convertTo(item.to)}
         title={title}
       >
         <span className={styles.ellipsis}>•••</span>
@@ -100,8 +118,8 @@ class Pagination extends PureComponent<PaginationProps, {}> {
     );
   };
 
+  // 渲染分页项
   renderItem = (item: PaginationItem) => {
-    const { prefix } = this.props;
     if (item.ellipsis) {
       return this.renderEllipsis(item);
     }
@@ -111,7 +129,7 @@ class Pagination extends PureComponent<PaginationProps, {}> {
       <Link
         key={item.to}
         className={itemClassName}
-        to={`${prefix}/${item.to}`}
+        to={this.convertTo(item.to)}
         title={`第${item.to}页`}
       >
         {item.to}
@@ -120,10 +138,12 @@ class Pagination extends PureComponent<PaginationProps, {}> {
   };
 
   render() {
-    const { current, total, prefix } = this.props;
-    const start = 1,
-      end = total;
+    const { current, total } = this.props;
+    const start = 1;
+    const end = total;
+    // 判定是否有前一页
     const toPrev = current - start > 0 ? current - 1 : null;
+    // 判定是否有后一页
     const toNext = end - current > 0 ? current + 1 : null;
     const items = this.generatePaginationItems(current, start, end);
     return (
@@ -131,7 +151,7 @@ class Pagination extends PureComponent<PaginationProps, {}> {
         {toPrev ? (
           <Link
             className={styles.prev}
-            to={`${prefix}/${toPrev}`}
+            to={this.convertTo(toPrev)}
             title="向前1页"
           >
             <FaAngleLeft />
@@ -141,7 +161,7 @@ class Pagination extends PureComponent<PaginationProps, {}> {
         {toNext ? (
           <Link
             className={styles.next}
-            to={`${prefix}/${toNext}`}
+            to={this.convertTo(toNext)}
             title="向后1页"
           >
             <FaAngleRight />

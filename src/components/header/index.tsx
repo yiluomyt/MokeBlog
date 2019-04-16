@@ -10,6 +10,7 @@ interface HeaderProps {
   backgroundImage?: string;
 }
 
+// 页头
 class Header extends PureComponent<HeaderProps, {}> {
   render() {
     const { title, subtitle, backgroundImage } = this.props;

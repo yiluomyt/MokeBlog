@@ -14,6 +14,7 @@ interface ListPageProps {
   };
 }
 
+// 页面-列表
 class ListPage extends PureComponent<ListPageProps, {}> {
   render() {
     const posts = this.props.data.posts.nodes;

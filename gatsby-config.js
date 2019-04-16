@@ -36,7 +36,7 @@ module.exports = {
       options: {
         name: `blog`,
         path: `${__dirname}/content/blog/`,
-        ignore: [`**/SUMMARY.md`]
+        ignore: [`**/SUMMARY.md`],
       },
     },
     `gatsby-plugin-sharp`,
@@ -54,9 +54,10 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              // 
-            }
-          }
+              wrapperStyle: "margin: 4px auto;",
+              withWebp: true,
+            },
+          },
         ],
       },
     },
@@ -76,7 +77,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#2f54eb`,
         display: `standalone`,
-        icon: `static/icon.png`
+        icon: `static/icon.png`,
       },
     },
     `gatsby-plugin-offline`,

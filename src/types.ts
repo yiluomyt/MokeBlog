@@ -1570,13 +1570,18 @@ export enum SitePageFieldsEnum {
   PluginCreator___PluginOptions___Plugins___BrowserApIs = "pluginCreator___pluginOptions___plugins___browserAPIs",
   PluginCreator___PluginOptions___Plugins___SsrApIs = "pluginCreator___pluginOptions___plugins___ssrAPIs",
   PluginCreator___PluginOptions___Plugins___PluginFilepath = "pluginCreator___pluginOptions___plugins___pluginFilepath",
-  PluginCreator___PluginOptions___JavascriptEnabled = "pluginCreator___pluginOptions___javascriptEnabled",
-  PluginCreator___PluginOptions___CssLoaderOptions___MinifyClassNames = "pluginCreator___pluginOptions___cssLoaderOptions___minifyClassNames",
-  PluginCreator___PluginOptions___CssLoaderOptions___LocalIdentName = "pluginCreator___pluginOptions___cssLoaderOptions___localIdentName",
   PluginCreator___PluginOptions___Name = "pluginCreator___pluginOptions___name",
   PluginCreator___PluginOptions___Path = "pluginCreator___pluginOptions___path",
   PluginCreator___PluginOptions___Ignore = "pluginCreator___pluginOptions___ignore",
   PluginCreator___PluginOptions___NoInlineHighlight = "pluginCreator___pluginOptions___noInlineHighlight",
+  PluginCreator___PluginOptions___MaxWidth = "pluginCreator___pluginOptions___maxWidth",
+  PluginCreator___PluginOptions___WrapperStyle = "pluginCreator___pluginOptions___wrapperStyle",
+  PluginCreator___PluginOptions___BackgroundColor = "pluginCreator___pluginOptions___backgroundColor",
+  PluginCreator___PluginOptions___LinkImagesToOriginal = "pluginCreator___pluginOptions___linkImagesToOriginal",
+  PluginCreator___PluginOptions___ShowCaptions = "pluginCreator___pluginOptions___showCaptions",
+  PluginCreator___PluginOptions___PathPrefix = "pluginCreator___pluginOptions___pathPrefix",
+  PluginCreator___PluginOptions___WithWebp = "pluginCreator___pluginOptions___withWebp",
+  PluginCreator___PluginOptions___TracedSvg = "pluginCreator___pluginOptions___tracedSVG",
   PluginCreator___PluginOptions____ = "pluginCreator___pluginOptions____",
   PluginCreator___PluginOptions___Short_Name = "pluginCreator___pluginOptions___short_name",
   PluginCreator___PluginOptions___Start_Url = "pluginCreator___pluginOptions___start_url",
@@ -1585,6 +1590,9 @@ export enum SitePageFieldsEnum {
   PluginCreator___PluginOptions___Display = "pluginCreator___pluginOptions___display",
   PluginCreator___PluginOptions___Icon = "pluginCreator___pluginOptions___icon",
   PluginCreator___PluginOptions___PathCheck = "pluginCreator___pluginOptions___pathCheck",
+  PluginCreator___PluginOptions___JavascriptEnabled = "pluginCreator___pluginOptions___javascriptEnabled",
+  PluginCreator___PluginOptions___CssLoaderOptions___MinifyClassNames = "pluginCreator___pluginOptions___cssLoaderOptions___minifyClassNames",
+  PluginCreator___PluginOptions___CssLoaderOptions___LocalIdentName = "pluginCreator___pluginOptions___cssLoaderOptions___localIdentName",
   PluginCreator___NodeApIs = "pluginCreator___nodeAPIs",
   PluginCreator___BrowserApIs = "pluginCreator___browserAPIs",
   PluginCreator___SsrApIs = "pluginCreator___ssrAPIs",
@@ -1777,16 +1785,29 @@ export enum SitePluginFieldsEnum {
   PluginOptions___Plugins___Name = "pluginOptions___plugins___name",
   PluginOptions___Plugins___Version = "pluginOptions___plugins___version",
   PluginOptions___Plugins___PluginOptions___NoInlineHighlight = "pluginOptions___plugins___pluginOptions___noInlineHighlight",
+  PluginOptions___Plugins___PluginOptions___MaxWidth = "pluginOptions___plugins___pluginOptions___maxWidth",
+  PluginOptions___Plugins___PluginOptions___WrapperStyle = "pluginOptions___plugins___pluginOptions___wrapperStyle",
+  PluginOptions___Plugins___PluginOptions___BackgroundColor = "pluginOptions___plugins___pluginOptions___backgroundColor",
+  PluginOptions___Plugins___PluginOptions___LinkImagesToOriginal = "pluginOptions___plugins___pluginOptions___linkImagesToOriginal",
+  PluginOptions___Plugins___PluginOptions___ShowCaptions = "pluginOptions___plugins___pluginOptions___showCaptions",
+  PluginOptions___Plugins___PluginOptions___PathPrefix = "pluginOptions___plugins___pluginOptions___pathPrefix",
+  PluginOptions___Plugins___PluginOptions___WithWebp = "pluginOptions___plugins___pluginOptions___withWebp",
+  PluginOptions___Plugins___PluginOptions___TracedSvg = "pluginOptions___plugins___pluginOptions___tracedSVG",
   PluginOptions___Plugins___BrowserApIs = "pluginOptions___plugins___browserAPIs",
   PluginOptions___Plugins___SsrApIs = "pluginOptions___plugins___ssrAPIs",
   PluginOptions___Plugins___PluginFilepath = "pluginOptions___plugins___pluginFilepath",
-  PluginOptions___JavascriptEnabled = "pluginOptions___javascriptEnabled",
-  PluginOptions___CssLoaderOptions___MinifyClassNames = "pluginOptions___cssLoaderOptions___minifyClassNames",
-  PluginOptions___CssLoaderOptions___LocalIdentName = "pluginOptions___cssLoaderOptions___localIdentName",
   PluginOptions___Name = "pluginOptions___name",
   PluginOptions___Path = "pluginOptions___path",
   PluginOptions___Ignore = "pluginOptions___ignore",
   PluginOptions___NoInlineHighlight = "pluginOptions___noInlineHighlight",
+  PluginOptions___MaxWidth = "pluginOptions___maxWidth",
+  PluginOptions___WrapperStyle = "pluginOptions___wrapperStyle",
+  PluginOptions___BackgroundColor = "pluginOptions___backgroundColor",
+  PluginOptions___LinkImagesToOriginal = "pluginOptions___linkImagesToOriginal",
+  PluginOptions___ShowCaptions = "pluginOptions___showCaptions",
+  PluginOptions___PathPrefix = "pluginOptions___pathPrefix",
+  PluginOptions___WithWebp = "pluginOptions___withWebp",
+  PluginOptions___TracedSvg = "pluginOptions___tracedSVG",
   PluginOptions____ = "pluginOptions____",
   PluginOptions___Short_Name = "pluginOptions___short_name",
   PluginOptions___Start_Url = "pluginOptions___start_url",
@@ -1795,6 +1816,9 @@ export enum SitePluginFieldsEnum {
   PluginOptions___Display = "pluginOptions___display",
   PluginOptions___Icon = "pluginOptions___icon",
   PluginOptions___PathCheck = "pluginOptions___pathCheck",
+  PluginOptions___JavascriptEnabled = "pluginOptions___javascriptEnabled",
+  PluginOptions___CssLoaderOptions___MinifyClassNames = "pluginOptions___cssLoaderOptions___minifyClassNames",
+  PluginOptions___CssLoaderOptions___LocalIdentName = "pluginOptions___cssLoaderOptions___localIdentName",
   NodeApIs = "nodeAPIs",
   BrowserApIs = "browserAPIs",
   SsrApIs = "ssrAPIs",
@@ -1914,12 +1938,18 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 export type SitePluginPluginOptions = {
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
-  javascriptEnabled?: Maybe<Scalars["Boolean"]>;
-  cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptions>;
   name?: Maybe<Scalars["String"]>;
   path?: Maybe<Scalars["String"]>;
   ignore?: Maybe<Array<Maybe<Scalars["String"]>>>;
   noInlineHighlight?: Maybe<Scalars["Boolean"]>;
+  maxWidth?: Maybe<Scalars["Int"]>;
+  wrapperStyle?: Maybe<Scalars["String"]>;
+  backgroundColor?: Maybe<Scalars["String"]>;
+  linkImagesToOriginal?: Maybe<Scalars["Boolean"]>;
+  showCaptions?: Maybe<Scalars["Boolean"]>;
+  pathPrefix?: Maybe<Scalars["String"]>;
+  withWebp?: Maybe<Scalars["Boolean"]>;
+  tracedSVG?: Maybe<Scalars["Boolean"]>;
   _?: Maybe<Scalars["String"]>;
   short_name?: Maybe<Scalars["String"]>;
   start_url?: Maybe<Scalars["String"]>;
@@ -1928,6 +1958,8 @@ export type SitePluginPluginOptions = {
   display?: Maybe<Scalars["String"]>;
   icon?: Maybe<Scalars["String"]>;
   pathCheck?: Maybe<Scalars["Boolean"]>;
+  javascriptEnabled?: Maybe<Scalars["Boolean"]>;
+  cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptions>;
 };
 
 export type SitePluginPluginOptionsCssLoaderOptions = {
@@ -1942,12 +1974,18 @@ export type SitePluginPluginOptionsCssLoaderOptionsFilterInput = {
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
-  javascriptEnabled?: Maybe<BooleanQueryOperatorInput>;
-  cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptionsFilterInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   ignore?: Maybe<StringQueryOperatorInput>;
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>;
+  maxWidth?: Maybe<IntQueryOperatorInput>;
+  wrapperStyle?: Maybe<StringQueryOperatorInput>;
+  backgroundColor?: Maybe<StringQueryOperatorInput>;
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
+  showCaptions?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
+  withWebp?: Maybe<BooleanQueryOperatorInput>;
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>;
   _?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
@@ -1956,6 +1994,8 @@ export type SitePluginPluginOptionsFilterInput = {
   display?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  javascriptEnabled?: Maybe<BooleanQueryOperatorInput>;
+  cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptionsFilterInput>;
 };
 
 export type SitePluginPluginOptionsPlugins = {
@@ -1986,10 +2026,26 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
   noInlineHighlight?: Maybe<Scalars["Boolean"]>;
+  maxWidth?: Maybe<Scalars["Int"]>;
+  wrapperStyle?: Maybe<Scalars["String"]>;
+  backgroundColor?: Maybe<Scalars["String"]>;
+  linkImagesToOriginal?: Maybe<Scalars["Boolean"]>;
+  showCaptions?: Maybe<Scalars["Boolean"]>;
+  pathPrefix?: Maybe<Scalars["String"]>;
+  withWebp?: Maybe<Scalars["Boolean"]>;
+  tracedSVG?: Maybe<Scalars["Boolean"]>;
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>;
+  maxWidth?: Maybe<IntQueryOperatorInput>;
+  wrapperStyle?: Maybe<StringQueryOperatorInput>;
+  backgroundColor?: Maybe<StringQueryOperatorInput>;
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
+  showCaptions?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
+  withWebp?: Maybe<BooleanQueryOperatorInput>;
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {

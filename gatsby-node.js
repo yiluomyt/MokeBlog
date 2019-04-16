@@ -100,7 +100,7 @@ function createListPages(posts, createPage, createRedirect) {
   // 按页数创建页
   _.range(numPages).forEach(i => {
     createPage({
-      path: `/list/${i + 1}`,
+      path: i === 0 ? `/list` : `/list/${i + 1}`,
       component: path.resolve(`./src/templates/list.tsx`),
       context: {
         limit: postsPerPage,
@@ -109,12 +109,6 @@ function createListPages(posts, createPage, createRedirect) {
         numPages: numPages,
       },
     });
-  });
-  createRedirect({
-    fromPath: `/list`,
-    isPermanent: true,
-    redirectInBrowser: true,
-    toPath: `/list/1`,
   });
 }
 
@@ -142,7 +136,7 @@ function createTagPages(posts, createPage, createRedirect) {
     // 按页数创建页
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: `/tag/${tag}/${i + 1}`,
+        path: i === 0 ? `/tag/${tag}` : `/tag/${tag}/${i + 1}`,
         component: path.resolve(`./src/templates/tag.tsx`),
         context: {
           tag: tag,
@@ -152,12 +146,6 @@ function createTagPages(posts, createPage, createRedirect) {
           numPages: numPages,
         },
       });
-    });
-    createRedirect({
-      fromPath: `/tag/${tag}`,
-      isPermanent: true,
-      redirectInBrowser: true,
-      toPath: `/tag/${tag}/1`,
     });
   });
 }

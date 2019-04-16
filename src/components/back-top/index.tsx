@@ -18,7 +18,9 @@ interface BackTopState {
   visible: boolean;
 }
 
+// 组件-回滚顶部
 class BackTop extends PureComponent<{}, BackTopState> {
+  // 默认不可视
   readonly state: BackTopState = { visible: false };
 
   // 当前的滚动距离

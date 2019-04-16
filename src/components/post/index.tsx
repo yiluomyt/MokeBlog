@@ -7,6 +7,7 @@ interface PostProps {
   post: MarkdownRemark;
 }
 
+// 组件-博客
 class Post extends PureComponent<PostProps, {}> {
   render() {
     const html = this.props.post.html as string;

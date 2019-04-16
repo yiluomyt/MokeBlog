@@ -4,9 +4,11 @@ import styles from "./index.module.less";
 
 export interface ContainerProps
   extends React.HtmlHTMLAttributes<HTMLMainElement> {
+  // 多列布局
   flex?: boolean;
 }
 
+// 基础容器
 class Container extends PureComponent<ContainerProps, {}> {
   render() {
     const { children, flex, style } = this.props;

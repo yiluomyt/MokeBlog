@@ -8,6 +8,7 @@ interface TagProps {
   to?: string | null;
 }
 
+// 组件-标签
 class Tag extends PureComponent<TagProps, {}> {
   render() {
     const { name, to } = this.props;
