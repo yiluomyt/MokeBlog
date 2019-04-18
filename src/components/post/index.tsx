@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { MarkdownRemark } from "@/types";
 
 import styles from "./index.module.less";
+import "katex/dist/katex.min.css";
 
 interface PostProps {
   post: MarkdownRemark;

@@ -49,7 +49,14 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
             options: {
               noInlineHighlight: false,
+              aliases: {
+                dockerfile: "docker",
+                conf: "apacheconf"
+              }
             },
+          },
+          {
+            resolve: `gatsby-remark-katex`,
           },
           {
             resolve: `gatsby-remark-images`,
