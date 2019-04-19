@@ -9,6 +9,7 @@ import {
 import _ from "lodash";
 
 import styles from "./index.module.less";
+import { classIf } from "@/utils";
 
 interface PaginationItem {
   ellipsis?: "prev" | "next";
@@ -123,12 +124,10 @@ class Pagination extends PureComponent<PaginationProps, {}> {
     if (item.ellipsis) {
       return this.renderEllipsis(item);
     }
-    const itemClassName =
-      styles.item + (item.isCurrent ? ` ${styles.itemActive}` : "");
     return (
       <Link
         key={item.to}
-        className={itemClassName}
+        className={styles.item + classIf(item.isCurrent, styles.itemActive)}
         to={this.convertTo(item.to)}
         title={`第${item.to}页`}
       >

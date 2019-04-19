@@ -1,21 +1,8 @@
 const path = require("path");
+const site = require("./site.json");
 
 module.exports = {
-  siteMetadata: {
-    siteTitle: "Moke",
-    description: "This is Blog framework.",
-    url: "https://blog.mytyiluo.cn",
-    menuItems: [
-      {
-        key: "Home",
-        href: "/",
-      },
-      {
-        key: "About",
-        href: "/about",
-      },
-    ],
-  },
+  siteMetadata: site,
   plugins: [
     `gatsby-plugin-typescript`,
     {
@@ -31,6 +18,13 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-root-import`,
+      options: {
+        "@": path.join(__dirname, "src"),
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -44,20 +38,22 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-autolink-headers`,
+          // 代码高亮
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
               noInlineHighlight: false,
               aliases: {
                 dockerfile: "docker",
-                conf: "apacheconf"
-              }
+                conf: "apacheconf",
+              },
             },
           },
+          // LaTex支持
           {
             resolve: `gatsby-remark-katex`,
           },
+          // 响应式图片
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -68,13 +64,7 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-root-import`,
-      options: {
-        "@": path.join(__dirname, "src"),
-      },
-    },
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

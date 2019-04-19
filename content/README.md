@@ -1,6 +1,6 @@
 # 博客格式
 
-博客内容请放在当前目录下的 blog 文件夹中，仅支持 markdown 格式。
+博客内容请放在当前目录下的 Blog 文件夹中，仅支持 markdown 格式。
 
 Frontmatter 支持以下字段
 

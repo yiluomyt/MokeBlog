@@ -1,6 +1,11 @@
 @import "~@/styles/theme.less";
 @import "~@/styles/util.less";
 
+.content {
+  height: 100%;
+  min-height: 30vh;
+}
+
 .topic-list {
   margin-left: 16px;
 
@@ -37,6 +42,7 @@
 @media screen and (min-width: @screen-md-min) {
   .content {
     max-width: @screen-lg;
+    width: 100%;
   }
 
   .extra {

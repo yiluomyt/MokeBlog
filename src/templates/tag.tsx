@@ -2,10 +2,11 @@ import React, { PureComponent } from "react";
 import { graphql } from "gatsby";
 import { Layout, Card, PostList, Pagination } from "@/components";
 
-import { MarkdownRemark } from "@/types";
+import { MarkdownRemark, Site } from "@/types";
 
 interface TagPageProps {
   data: {
+    site: Site;
     posts: { nodes: Array<MarkdownRemark> };
   };
   pageContext: {
@@ -17,13 +18,14 @@ interface TagPageProps {
 
 class TagPage extends PureComponent<TagPageProps, {}> {
   render() {
+    const { backgroundImage } = this.props.data.site.siteMetadata.pages.tag;
     const posts = this.props.data.posts.nodes;
     const { tag, curPage, numPages } = this.props.pageContext;
     return (
       <Layout
         title={tag}
+        backgroundImage={backgroundImage}
         metaTitle={`Tag: ${tag}`}
-        backgroundImage="/bg.webp"
         metaKeywords={[tag]}
       >
         <Card title={`第${curPage}页`}>
@@ -43,6 +45,15 @@ export default TagPage;
 
 export const query = graphql`
   query($tag: String!, $skip: Int!, $limit: Int!) {
+    site {
+      siteMetadata {
+        pages {
+          tag {
+            backgroundImage
+          }
+        }
+      }
+    }
     posts: allMarkdownRemark(
       filter: {
         fields: {

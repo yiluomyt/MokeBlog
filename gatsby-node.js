@@ -7,7 +7,6 @@ const postsPerPage = 6;
 // 添加节点属性
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
-  let i = 0;
   if (node.internal.type === `MarkdownRemark`) {
     const fileNode = getNode(node.parent);
     const dirName = fileNode.relativeDirectory.replace(`\\`, `/`).split(`/`)[0];
@@ -28,7 +27,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       // 博客主题
       {
         name: `topic`,
-        value: node.frontmatter.topic || dirName || `无`,
+        value: node.frontmatter.topic || dirName,
       },
       // 博客标签
       {
@@ -115,7 +114,7 @@ function createListPages(posts, createPage, createRedirect) {
 function createTopicPages(posts, createPage) {
   const topics = posts.map(post => post.fields.topic);
   // 创建专题页面
-  _.forEach(_.uniq(topics), topic => {
+  _.forEach(_.uniq(topics).filter(e => e), topic => {
     createPage({
       path: `/topic/${topic}`,
       component: path.resolve(`./src/templates/topic.tsx`),

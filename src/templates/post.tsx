@@ -2,33 +2,32 @@ import React, { PureComponent } from "react";
 import { graphql } from "gatsby";
 import { Layout, Card, Post } from "@/components";
 
-import { MarkdownRemark, MarkdownRemarkFields } from "@/types";
+import { MarkdownRemark, Site } from "@/types";
 
 interface PostPageProps {
   data: {
+    site: Site;
     post: MarkdownRemark;
   };
 }
 
 class PostPage extends PureComponent<PostPageProps, {}> {
   render() {
+    let pageInfo = this.props.data.site.siteMetadata.pages.post;
     const post = this.props.data.post;
-    const {
-      name: title,
-      cover: bgImg,
-      topic,
-      tags,
-    } = post.fields as MarkdownRemarkFields;
-    let keywords: string[] = (tags as string[]) || [];
+    const { name, cover, topic, tags } = post.fields;
+    let keywords = tags;
+
+    if (name) pageInfo.title = name;
+    if (cover) pageInfo.backgroundImage = cover;
     if (topic) keywords.push(topic);
     return (
       <Layout
-        title={title}
-        backgroundImage={bgImg || "/bg.webp"}
-        metaTitle={`${title} - ${topic}`}
+        {...pageInfo}
+        metaTitle={topic ? `${name} - ${topic}` : name}
         metaKeywords={keywords}
       >
-        <Card>
+        <Card style={{ minHeight: "30vh" }}>
           <Post post={post} />
         </Card>
       </Layout>
@@ -39,6 +38,17 @@ class PostPage extends PureComponent<PostPageProps, {}> {
 export default PostPage;
 export const query = graphql`
   query($slug: String!) {
+    site {
+      siteMetadata {
+        pages {
+          post {
+            title
+            subtitle
+            backgroundImage
+          }
+        }
+      }
+    }
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       headings {

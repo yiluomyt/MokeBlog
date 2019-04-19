@@ -25,13 +25,13 @@ class Header extends PureComponent<HeaderProps, {}> {
             <nav>
               {/* 站点名称 */}
               <h3 className={styles.siteTitle}>
-                <Link to="/">{meta!.siteTitle}</Link>
+                <Link to="/">{meta.siteTitle}</Link>
               </h3>
               {/* 菜单 */}
               <ul className={styles.menu}>
-                {meta!.menuItems!.map(item => (
-                  <li key={item!.key as string}>
-                    <Link to={`${item!.href}`}>{item!.key}</Link>
+                {meta.menuItems.map(item => (
+                  <li key={item.key}>
+                    <Link to={`${item.href}`}>{item.key}</Link>
                   </li>
                 ))}
               </ul>

@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { FaAngleUp } from "react-icons/fa";
 
 import styles from "./index.module.less";
+import { classIf } from "@/utils";
 
 // 缓动函数
 const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
@@ -75,11 +76,12 @@ class BackTop extends PureComponent<{}, BackTopState> {
   }
 
   render() {
-    const backTopClassName = this.state.visible
-      ? `${styles.backTop} ${styles.backTopOn}`
-      : styles.backTop;
+    const { visible } = this.state;
     return (
-      <div className={backTopClassName} onClick={this.scrollToTop}>
+      <div
+        className={styles.backTop + classIf(visible, styles.backTopOn)}
+        onClick={this.scrollToTop}
+      >
         <FaAngleUp />
       </div>
     );

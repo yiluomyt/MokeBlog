@@ -4,10 +4,11 @@ import { Layout, Card, Post } from "@/components";
 
 import styles from "./topic.module.less";
 
-import { MarkdownRemark } from "@/types";
+import { MarkdownRemark, Site } from "@/types";
 
 interface TopicPageProps {
   data: {
+    site: Site;
     posts: { nodes: Array<MarkdownRemark> };
     readme: MarkdownRemark;
   };
@@ -18,23 +19,23 @@ interface TopicPageProps {
 
 class TopicPage extends PureComponent<TopicPageProps, {}> {
   render() {
+    const pageInfo = this.props.data.site.siteMetadata.pages.topic;
     const topic = this.props.pageContext.topic;
     const readme = this.props.data.readme;
     const posts = this.props.data.posts.nodes.map(post => ({
       id: post.id,
-      to: post.fields!.slug as string,
-      name: post.fields!.name as string,
+      to: post.fields.slug,
+      name: post.fields.name,
     }));
     return (
       <Layout
-        title={topic}
+        {...pageInfo}
         containerOptions={{
           flex: true,
           style: { flexDirection: "row-reverse" },
         }}
         metaTitle={`Topic: ${topic}`}
         metaKeywords={[topic]}
-        backgroundImage="/bg.webp"
       >
         <div>
           <Card className={styles.catalog} title="目录">
@@ -58,6 +59,17 @@ class TopicPage extends PureComponent<TopicPageProps, {}> {
 export default TopicPage;
 export const query = graphql`
   query($topic: String!) {
+    site {
+      siteMetadata {
+        pages {
+          topic {
+            title
+            subtitle
+            backgroundImage
+          }
+        }
+      }
+    }
     posts: allMarkdownRemark(
       filter: {
         fields: {
@@ -66,6 +78,7 @@ export const query = graphql`
           posted: { ne: false }
         }
       }
+      sort: { fields: [fields___top, fields___date], order: [DESC, ASC] }
     ) {
       nodes {
         id

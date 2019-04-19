@@ -1,0 +1,49 @@
+{
+  "siteTitle": "Moke",
+  "siteUrl": "https://blog.mytyiluo.cn",
+  "alipay": "./alipay.webp",
+  "email": "mytyiluo@outlook.com",
+  "github": "https://github.com/yiluomyt",
+  "menuItems": [
+    {
+      "key": "Home",
+      "href": "/"
+    },
+    {
+      "key": "About",
+      "href": "/about"
+    }
+  ],
+  "pages": {
+    "index": {
+      "title": "Moke Blog",
+      "subtitle": "Microsoft Fans ♥ .NET Core",
+      "backgroundImage": "/bg.webp"
+    },
+    "about": {
+      "title": "About Me",
+      "subtitle": "",
+      "backgroundImage": "/bg.webp"
+    },
+    "list": {
+      "title": "博客列表",
+      "subtitle": "",
+      "backgroundImage": "/bg.webp"
+    },
+    "post": {
+      "title": "Post",
+      "subtitle": "",
+      "backgroundImage": "/bg.webp"
+    },
+    "tag": {
+      "title": "Tag",
+      "subtitle": "",
+      "backgroundImage": "/bg.webp"
+    },
+    "topic": {
+      "title": "Topic",
+      "subtitle": "",
+      "backgroundImage": "/bg.webp"
+    }
+  }
+}

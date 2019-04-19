@@ -1,8 +1,9 @@
 import React, { PureComponent } from "react";
 import { Link } from "gatsby";
 import Tag from "@/components/tag";
+import { classIf } from "@/utils";
 
-import { MarkdownRemark, MarkdownRemarkFields } from "@/types";
+import { MarkdownRemark } from "@/types";
 
 import styles from "./index.module.less";
 
@@ -23,39 +24,37 @@ class PostList extends PureComponent<PostListProps, {}> {
 
   renderPost = (post: MarkdownRemark) => {
     const { id, excerpt } = post;
-    const {
-      name,
-      slug,
-      topic,
-      date,
-      tags,
-      top,
-    } = post.fields as MarkdownRemarkFields;
+    const { name, slug, topic, date, tags, top } = post.fields;
     return (
       <div key={id} className={styles.post}>
-        <Link className={styles.link} to={slug as string}>
-          <h3 className={styles.title}>
-            {top ? "[置顶]" : null}
-            {name}
-          </h3>
+        <Link className={styles.link} to={slug}>
+          <h3 className={styles.title + classIf(top, styles.top)}>{name}</h3>
           <p className={styles.excerpt}>{excerpt}</p>
         </Link>
         <div className={styles.info}>
           <div>
             {date ? <span className={styles.date}>{date}</span> : null}
-            <Link className={styles.topic} to={`/topic/${topic}`}>
-              {topic}
-            </Link>
+            {date && topic ? (
+              <span style={{ marginLeft: "8px" }}>//</span>
+            ) : null}
+            {topic ? (
+              <Link className={styles.topic} to={`/topic/${topic}`}>
+                {topic}
+              </Link>
+            ) : null}
           </div>
-          {this.renderPostTagGroup(tags as string[])}
+          {this.renderPostTagGroup(tags)}
         </div>
       </div>
     );
   };
 
   render() {
+    const { posts } = this.props;
     return (
-      <div className={styles.list}>{this.props.posts.map(this.renderPost)}</div>
+      <div className={styles.list}>
+        {posts.length > 0 ? posts.map(this.renderPost) : <p>暂无博客</p>}
+      </div>
     );
   }
 }

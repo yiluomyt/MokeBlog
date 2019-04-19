@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 
 import styles from "./index.module.less";
+import { classIf } from "@/utils";
 
 export interface ContainerProps
   extends React.HtmlHTMLAttributes<HTMLMainElement> {
@@ -14,7 +15,7 @@ class Container extends PureComponent<ContainerProps, {}> {
     const { children, flex, style } = this.props;
     return (
       <main
-        className={styles.container + (flex ? ` ${styles.flex}` : "")}
+        className={styles.container + classIf(flex, styles.flex)}
         style={style}
       >
         {children}

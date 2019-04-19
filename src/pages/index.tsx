@@ -5,14 +5,11 @@ import { Layout, Card, PostList, Tag } from "@/components";
 
 import styles from "./index.module.less";
 
-import { MarkdownRemark } from "@/types";
-
-const title = "Moke Blog";
-const subtitle = "Microsoft Fans ♥ .NET Core";
-const bgImg = "/bg.webp";
+import { MarkdownRemark, Site } from "@/types";
 
 interface IndexProps {
   data: {
+    site: Site;
     posts: { nodes: Array<MarkdownRemark> };
     statistics: { nodes: Array<MarkdownRemark> };
   };
@@ -21,27 +18,28 @@ interface IndexProps {
 // 页面-首页
 class IndexPage extends PureComponent<IndexProps, {}> {
   render() {
+    // 页面信息
+    const pageInfo = this.props.data.site.siteMetadata.pages.index;
     const posts = this.props.data.posts.nodes;
+    const data = this.props.data.statistics.nodes;
     // 统计主题
-    const topics = _.uniq(
-      this.props.data.statistics.nodes.map(e => e!.fields!.topic)
-    );
+    const topics = _.chain(data)
+      .map(e => e.fields.topic)
+      .uniq()
+      .value();
     // 统计标签
-    const tags = _.uniq(
-      this.props.data.statistics.nodes
-        .filter(e => e.fields!.tags)
-        .map(e => e.fields!.tags as string[])
-        .reduce((a, b) => a.concat(b))
-    );
+    const tags = _.chain(data)
+      .map(e => e.fields.tags)
+      .flatten()
+      .countBy()
+      .pickBy((value, key) => value > 2)
+      .map((value, key) => ({ key: key, value: value }))
+      .orderBy("value", "desc")
+      .map(e => e.key)
+      .value();
 
     return (
-      <Layout
-        title={title}
-        subtitle={subtitle}
-        backgroundImage={bgImg}
-        containerOptions={{ flex: true }}
-        metaTitle="Moke Blog"
-      >
+      <Layout {...pageInfo} containerOptions={{ flex: true }}>
         {/* 内容 */}
         <Card className={styles.content} title="Recent">
           <PostList posts={posts} />
@@ -53,18 +51,24 @@ class IndexPage extends PureComponent<IndexProps, {}> {
           {/* 主题 */}
           <Card title="Topic">
             <ul className={styles.topicList}>
-              {topics.map(topic => (
-                <li key={topic as string}>
-                  <Link to={`/topic/${topic}`}>{topic}</Link>
-                </li>
-              ))}
+              {topics.length > 0 ? (
+                topics.map(topic => (
+                  <li key={topic as string}>
+                    <Link to={`/topic/${topic}`}>{topic}</Link>
+                  </li>
+                ))
+              ) : (
+                <li>暂无主题</li>
+              )}
             </ul>
           </Card>
           {/* 标签 */}
           <Card title="Tag">
-            {tags.map(tag => (
-              <Tag key={tag} name={tag} />
-            ))}
+            {tags.length > 0 ? (
+              tags.map(tag => <Tag key={tag} name={tag} />)
+            ) : (
+              <p>暂无标签</p>
+            )}
           </Card>
         </div>
       </Layout>
@@ -76,9 +80,20 @@ export default IndexPage;
 
 export const query = graphql`
   {
+    site {
+      siteMetadata {
+        pages {
+          index {
+            title
+            subtitle
+            backgroundImage
+          }
+        }
+      }
+    }
     posts: allMarkdownRemark(
       filter: { fields: { name: { ne: "README" }, posted: { ne: false } } }
-      sort: { fields: [fields___top, fields___date], order: [ASC, DESC] }
+      sort: { fields: [fields___top, fields___date], order: [DESC, DESC] }
       limit: 6
     ) {
       nodes {

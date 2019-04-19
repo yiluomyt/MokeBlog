@@ -11,7 +11,7 @@ interface PostProps {
 // 组件-博客
 class Post extends PureComponent<PostProps, {}> {
   render() {
-    const html = this.props.post.html as string;
+    const html = this.props.post.html;
     return (
       <div className={styles.post} dangerouslySetInnerHTML={{ __html: html }} />
     );

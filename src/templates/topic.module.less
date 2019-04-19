@@ -1,13 +1,16 @@
 @import "~@/styles/theme.less";
 
 .catalog {
-  min-width: 240px;
-  min-height: 35vh;
+  @media screen and (min-width: @screen-md-min) {
+    min-width: 240px;
+    min-height: 30vh;
+  }
 
   ol {
     margin-left: 2em;
 
     font-weight: @font-weight-medium;
+    line-height: 2;
 
     a {
       display: block;
