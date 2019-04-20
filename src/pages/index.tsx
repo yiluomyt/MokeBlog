@@ -33,9 +33,9 @@ class IndexPage extends PureComponent<IndexProps, {}> {
       .flatten()
       .countBy()
       .pickBy((value, key) => value > 2)
-      .map((value, key) => ({ key: key, value: value }))
-      .orderBy("value", "desc")
-      .map(e => e.key)
+      .map((value, key) => ({ tag: key, count: value }))
+      .orderBy("count", "desc")
+      .map(e => e.tag)
       .value();
 
     return (
