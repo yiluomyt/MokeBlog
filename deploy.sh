@@ -7,6 +7,8 @@ fi
 # 更新博客Repo以及LFS文件
 echo "--- Update Blog Repo & LFS Files ---"
 cd content/blog
+git fetch --all
+git reset --hard origin/master
 git pull
 git lfs pull
 cd ../../
