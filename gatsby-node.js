@@ -62,15 +62,21 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 // 根据模板创建页面
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions;
+  const { createPage } = actions;
   return graphql(`
     {
-      posts: allMarkdownRemark(
+      posts: allMarkdownRemark(filter: { fields: { name: { ne: "README" } } }) {
+        nodes {
+          fields {
+            slug
+          }
+        }
+      }
+      statistics: allMarkdownRemark(
         filter: { fields: { name: { ne: "README" }, posted: { ne: false } } }
       ) {
         nodes {
           fields {
-            slug
             topic
             tags
           }
@@ -82,18 +88,19 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors;
     }
     const posts = result.data.posts.nodes;
+    const statistics = result.data.statistics.nodes;
     // 博客页面
     createPostPages(posts, createPage);
     // 标签页面
-    createTagPages(posts, createPage, createRedirect);
+    createTagPages(statistics, createPage);
     // 专题页面
-    createTopicPages(posts, createPage);
+    createTopicPages(statistics, createPage);
     // 博客列表
-    createListPages(posts, createPage, createRedirect);
+    createListPages(statistics, createPage);
   });
 };
 
-function createListPages(posts, createPage, createRedirect) {
+function createListPages(posts, createPage) {
   const totalCount = posts.length;
   const numPages = Math.ceil(totalCount / postsPerPage);
   // 按页数创建页
@@ -125,7 +132,7 @@ function createTopicPages(posts, createPage) {
   });
 }
 
-function createTagPages(posts, createPage, createRedirect) {
+function createTagPages(posts, createPage) {
   let tags = posts.map(post => post.fields.tags);
   if (tags.length === 0) return;
   tags = tags.reduce((a, b) => a.concat(b));

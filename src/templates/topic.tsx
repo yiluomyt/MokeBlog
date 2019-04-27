@@ -21,6 +21,7 @@ class TopicPage extends PureComponent<TopicPageProps, {}> {
   render() {
     const pageInfo = this.props.data.site.siteMetadata.pages.topic;
     const topic = this.props.pageContext.topic;
+    pageInfo.title = topic;
     const readme = this.props.data.readme;
     const posts = this.props.data.posts.nodes.map(post => ({
       id: post.id,
