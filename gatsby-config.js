@@ -38,6 +38,12 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              icon: false,
+            },
+          },
           // 代码高亮
           {
             resolve: `gatsby-remark-prismjs`,

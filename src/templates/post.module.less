@@ -1,0 +1,33 @@
+@import "~@/styles/theme.less";
+
+.topic {
+  font-size: @font-family-title;
+  font-weight: @font-weight-semibold;
+  color: @color-second;
+  padding: 16px;
+  margin-left: -8px;
+}
+
+.date {
+  margin: 8px;
+}
+
+@media screen and (min-width: @screen-md-min) {
+  .post-card {
+    min-height: 30vh;
+    flex-grow: 3;
+    flex-basis: 540px;
+    width: 540px;
+  }
+  
+  .sidebar {
+    flex-grow: 1;
+    flex-basis: 180px;
+    width: 180px;
+  }
+
+  .sticky {
+    position: sticky;
+    top: 1rem;
+  }
+}

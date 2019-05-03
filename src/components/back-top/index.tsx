@@ -2,18 +2,7 @@ import React, { PureComponent } from "react";
 import { FaAngleUp } from "react-icons/fa";
 
 import styles from "./index.module.less";
-import { classIf } from "@/utils";
-
-// 缓动函数
-const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
-  const cc = c - b;
-  t /= d / 2;
-  if (t < 1) {
-    return (cc / 2) * t * t * t + b;
-  } else {
-    return (cc / 2) * ((t -= 2) * t * t + 2) + b;
-  }
-};
+import { classIf, easeInOutCubic, getCurrentScrollTop } from "@/utils";
 
 interface BackTopState {
   visible: boolean;
@@ -24,18 +13,9 @@ class BackTop extends PureComponent<{}, BackTopState> {
   // 默认不可视
   readonly state: BackTopState = { visible: false };
 
-  // 当前的滚动距离
-  getCurrentScrollTop() {
-    return (
-      window.pageYOffset ||
-      document.body.scrollTop ||
-      document.documentElement.scrollTop
-    );
-  }
-
   // 滚动至顶部
   scrollToTop = (e: React.MouseEvent<HTMLDivElement>) => {
-    const scrollTop = this.getCurrentScrollTop();
+    const scrollTop = getCurrentScrollTop();
     const startTime = Date.now();
     // 帧函数
     const frameFunc = () => {
@@ -62,7 +42,7 @@ class BackTop extends PureComponent<{}, BackTopState> {
   // 处理滚动事件
   handleScroll = () => {
     const headerHeight = window.innerHeight * 0.65;
-    this.setState({ visible: this.getCurrentScrollTop() > headerHeight });
+    this.setState({ visible: getCurrentScrollTop() > headerHeight });
   };
 
   // 监听滚动事件

@@ -1,0 +1,58 @@
+@import "~@/styles/theme.less";
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -100%;
+  overflow: auto;
+
+  margin: 0;
+  padding: 16px;
+
+  height: 100%;
+  width: 65vw;
+
+  background: white; //rgba(244, 245, 245, 0.4);
+  box-shadow: -1px 0 2px @color-shadow;
+
+  z-index: 1100;
+
+  transition: right @ease-time @ease-in-out;
+
+  &-on {
+    right: 0;
+  }
+
+  &-on + .mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    background: rgba(244, 245, 245, 0.4);
+
+    transition: background-color @ease-time @ease-in-out;
+
+    z-index: 1099;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  padding: 8px;
+  font-size: 16px;
+
+  &:active {
+    cursor: pointer;
+    color: @color-primary;
+    background: @color-bg;
+  }
+}

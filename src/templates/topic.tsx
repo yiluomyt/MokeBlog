@@ -31,10 +31,7 @@ class TopicPage extends PureComponent<TopicPageProps, {}> {
     return (
       <Layout
         {...pageInfo}
-        containerOptions={{
-          flex: true,
-          style: { flexDirection: "row-reverse" },
-        }}
+        containerOptions={{ flex: true }}
         metaTitle={`Topic: ${topic}`}
         metaKeywords={[topic]}
       >
